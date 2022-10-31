@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hola mundo!{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+
+    <h1>Fotos de {{ nombrePerfil3 | upper }}</h1>
+
+    <h2>Junio 2022</h2>
+
+    <ul>
+        <li><img src="https://img.freepik.com/foto-gratis/feliz-joven_1098-20869.jpg" class="foto-galeria"></li>
+        <li><img src="https://img.freepik.com/foto-gratis/feliz-joven_1098-20869.jpg" class="foto-galeria"></li>
+        <li><img src="https://img.freepik.com/foto-gratis/feliz-joven_1098-20869.jpg" class="foto-galeria"></li>
+        <li><img src="https://img.freepik.com/foto-gratis/feliz-joven_1098-20869.jpg" class="foto-galeria"></li>
+    </ul>
+
+    <a href="{{ path('internoPerfil', { 'persona': nombrePerfil3 }) }}">Volver</a>
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+// se importan las funciones para parametrizar variables Sass
+@import '~bootstrap/scss/functions';
+
+// se personalizan las variables Sass
+$primary: rgb(255, 19, 223); // Customiza el color principal de Bootstrap
+
+
+// se importa todo bootstrap, pero con variables parametrizables (Sass)
+@import '~bootstrap/scss/bootstrap';
+
+// luego de realizado todo lo anterior, se importan los estilos duros propios, sin variables
+@import '../styles/app.css';

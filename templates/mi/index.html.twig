@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hola mundo!{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+
+    <h1>Mi primera pagina con symfony</h1>
+
+    <img src="https://ecoplanes.com/4ckPUZyq6QYS/uploads/2016/10/holamundo-810x439.jpg" width=250px>
+
+
+    <p>Do qui <strong>labore aute ullamco</strong> officia commodo ullamco officia cillum. Officia do aliquip exercitation quis tempor nulla veniam aliquip cillum. Esse pariatur esse aute aliquip aliqua fugiat eu irure consectetur magna laboris. Aliquip culpa aliquip nisi officia cillum sunt.Lorem dolore minim est non voluptate est minim. Irure minim cillum sint ullamco Lorem laboris culpa sit quis aliquip non. Ex ut laboris excepteur eu anim commodo qui. Qui amet dolor proident eu deserunt cillum. Magna cillum reprehenderit dolore adipisicing nostrud Lorem do. Velit ut occaecat et in amet do enim sint anim. Ipsum ex consectetur pariatur commodo reprehenderit elit sunt velit dolor proident nisi.</p>
+
+    <p>Ipsum quis commodo qui aliqua deserunt qui. Sit sit ipsum ullamco mollit cupidatat irure. Id commodo consectetur anim aute incididunt irure fugiat excepteur.</p>
+
+    <p>Id officia pariatur voluptate labore adipisicing. Dolore nisi reprehenderit sit dolore officia amet. Dolor officia dolore minim id officia velit veniam quis incididunt nisi commodo voluptate. Incididunt reprehenderit anim officia officia pariatur voluptate excepteur enim dolore mollit eiusmod.</p>
+
+    <p>La edad de nacho es: {{ edadController }}</p>
+
+    <a href="{{ path('internoPerfil', { 'persona': nombrePerfil }) }}">Ver perfil de {{ nombrePerfil }}</a>
+
+    <footer>
+        Diseñado y desarrollado por nacho 
+    </footer>
+
+
+</div>
+{% endblock %}

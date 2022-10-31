@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hola mundo!{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+
+    <h1>Perfil de {{ nombrePerfil2 | upper }}</h1>
+
+    <ul>
+        <li><a href="{{ path('internoFotos', {'nombrePersona': nombrePerfil2}) }}">Fotos</a></li>
+        <li><a href="#">Videos</a></li>
+        <li><a href="#">Textos</a></li>
+    </ul>
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+           <h5 class="card-title">Navidad</h5>
+           <p class="card-text">Fotos de la navidad del 89.</p>
+           <a href="#" class="btn btn-primary">Ver</a>
+         </div>
+    </div>
+
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown button
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div>
+
+
+
+
+    </div>
+    </div>
+
+
+
+
+    <a href="{{ path('internoMi') }}">Volver</a>
+
+
+    <footer>
+        Diseñado y desarrollado por nacho 
+    </footer>
+
+
+</div>
+{% endblock %}

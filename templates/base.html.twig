@@ -1,19 +1,58 @@
 <!DOCTYPE html>
 <html>
-    <head>
+    <head> 
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+
+            {# usando webpack, se define donde esta el archivo css principal (public/build/css/app.css) #}
+
+            {{ encore_entry_link_tags('css/app') }}
+            
         {% endblock %}
 
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+
+            {# usando webpack, se define donde esta el archivo js principal (public/build/js/app.js) #}
+            {{ encore_entry_script_tags('js/app') }} 
+           
+
+
         {% endblock %}
     </head>
+
     <body>
-        {% block body %}{% endblock %}
+        <div class="container-fluid">
+
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="#">Capacitación</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="{{ path('internoMi') }}">Hola mundo</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ path('app_persona_index') }}">Persona</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+
+            {% block body %}
+            {% endblock %}
+        </div>
+
+        <footer>
+            Diseñado y desarrollado por nacho 
+        </footer>
+
     </body>
 </html>
