@@ -9,4 +9,7 @@
 // import '../styles/app.css';
 
 // start the Stimulus application
- import '../bootstrap';
+ //import '../bootstrap';
+
+ // se importan todos los componentes js de bootstrap
+ import '../../node_modules/bootstrap/dist/js/bootstrap.js';

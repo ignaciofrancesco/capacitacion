@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MiController extends AbstractController
 {
-    #[Route('/hola-mundo', name: 'internoMi')] // ruta que tipea el usuario, y q dispara la funcion
+    #[Route('/', name: 'internoMi')] // ruta que tipea el usuario, y q dispara la funcion
     public function index(): Response
     {
         return $this->render('mi/index.html.twig', [  //entre corchetes se pueden pasar variables en forma de array
