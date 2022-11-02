@@ -39,6 +39,10 @@ class Localidad
      */
     private $feriadosLocales;
 
+    public function __construct()
+    {
+        $this->organismos = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -59,6 +63,8 @@ class Localidad
 
 
 
+
+ 
 
     public function __toString()
     {

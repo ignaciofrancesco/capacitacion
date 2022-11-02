@@ -5,29 +5,48 @@ namespace App\Entity;
 use App\Repository\PersonaRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: PersonaRepository::class)]
+/**
+ * @ORM\Entity(repositoryClass=PersonaRepository::class)
+ */
 class Persona
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
 
-    #[ORM\Column(length: 255)]
-    private ?string $apellido = null;
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nombre;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $nombre = null;
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $apellido;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $dni = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $email = null;
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $dni;
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getNombre(): ?string
+    {
+        return $this->nombre;
+    }
+
+    public function setNombre(string $nombre): self
+    {
+        $this->nombre = $nombre;
+
+        return $this;
     }
 
     public function getApellido(): ?string
@@ -42,18 +61,6 @@ class Persona
         return $this;
     }
 
-    public function getNombre(): ?string
-    {
-        return $this->nombre;
-    }
-
-    public function setNombre(?string $nombre): self
-    {
-        $this->nombre = $nombre;
-
-        return $this;
-    }
-
     public function getDni(): ?int
     {
         return $this->dni;
@@ -62,18 +69,6 @@ class Persona
     public function setDni(?int $dni): self
     {
         $this->dni = $dni;
-
-        return $this;
-    }
-
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(?string $email): self
-    {
-        $this->email = $email;
 
         return $this;
     }

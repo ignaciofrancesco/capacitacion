@@ -45,6 +45,9 @@ class Organismo
     private $habilitado;
 
 
+    public function __construct()
+    {
+    }
 
     public function getId(): ?int
     {
@@ -111,6 +114,7 @@ class Organismo
         return $this;
     }
 
+ 
 
 
 

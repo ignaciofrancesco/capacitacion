@@ -9,10 +9,9 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Apellido</th>
                 <th>Nombre</th>
+                <th>Apellido</th>
                 <th>Dni</th>
-                <th>Email</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -20,10 +19,9 @@
         {% for persona in personas %}
             <tr>
                 <td>{{ persona.id }}</td>
-                <td>{{ persona.apellido }}</td>
                 <td>{{ persona.nombre }}</td>
+                <td>{{ persona.apellido }}</td>
                 <td>{{ persona.dni }}</td>
-                <td>{{ persona.email }}</td>
                 <td>
                     <a href="{{ path('app_persona_show', {'id': persona.id}) }}">show</a>
                     <a href="{{ path('app_persona_edit', {'id': persona.id}) }}">edit</a>
@@ -31,7 +29,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
