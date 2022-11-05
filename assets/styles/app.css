@@ -49,3 +49,9 @@ ul li {
 .list-title {
     margin: 2rem ;
 }
+
+/* se agregan estilos a la clase card de bootstrap */
+.card {
+    margin: 10px auto; /* Added */
+    float: none; /* Added */
+}

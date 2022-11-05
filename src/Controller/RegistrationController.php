@@ -11,7 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
+use Doctrine\ORM\EntityManagerInterface;
 
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
@@ -23,7 +24,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/registro", name="registro")
      */
-    public function registro(Request $request, UserPasswordHasherInterface $passwordHasher)
+    public function registro(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager)
     {
         $form = $this->createFormBuilder()
             ->add('usuario')
@@ -60,10 +61,13 @@ class RegistrationController extends AbstractController
             $usuario->setEmail($data['email']);
             $usuario->setFechaAlta(new \DateTime());
 
-            $em = $this->getDoctrine()->getManager();
+            // vieja manera de persistir
+          //  $em = $doctrine->getManager();
+          //  $em = $this->getDoctrine()->getManager();
 
-            $em->persist($usuario);
-            $em->flush();
+            $entityManager->persist($usuario);
+            $entityManager->flush();
+
 
             return $this->redirect($this->generateUrl('app_login'));
 
