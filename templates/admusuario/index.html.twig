@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usuario index{% endblock %}
+
+{% block body %}
+    <h1>Usuario index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Roles</th>
+                <th>Dni</th>
+                <th>Apellido</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>FechaAlta</th>
+                <th>FechaBaja</th>
+                <th>UltimoAcceso</th>
+                <th>CantidadAccesos</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.id }}</td>
+                <td>{{ usuario.username }}</td>
+                <td>{{ usuario.roles ? usuario.roles|json_encode|replace({'ROLE_': '', '[': '', ']': '', '"':'', ',': ', ' }) : '' }}</td>
+                <td>{{ usuario.dni }}</td>
+                <td>{{ usuario.apellido }}</td>
+                <td>{{ usuario.nombre }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.fechaAlta ? usuario.fechaAlta|date('Y-m-d') : '' }}</td>
+                <td>{{ usuario.fechaBaja ? usuario.fechaBaja|date('Y-m-d') : '' }}</td>
+                <td>{{ usuario.ultimoAcceso ? usuario.ultimoAcceso|date('Y-m-d') : '' }}</td>
+                <td>{{ usuario.cantidadAccesos }}</td>
+                <td>
+                    <a href="{{ path('app_admusuario_show', {'id': usuario.id}) }}">show</a>
+
+{% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('app_admusuario_edit', {'id': usuario.id}) }}">edit</a>
+{% endif %}
+
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% if is_granted('ROLE_ADMIN') %}
+    <a href="{{ path('app_admusuario_new') }}">Create new</a>
+{% endif %}
+
+{% endblock %}

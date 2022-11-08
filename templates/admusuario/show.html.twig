@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usuario{% endblock %}
+
+{% block body %}
+    <h1>Usuario</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ usuario.id }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ usuario.username }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ usuario.roles ? usuario.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ usuario.password }}</td>
+            </tr>
+            <tr>
+                <th>Dni</th>
+                <td>{{ usuario.dni }}</td>
+            </tr>
+            <tr>
+                <th>Apellido</th>
+                <td>{{ usuario.apellido }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ usuario.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ usuario.email }}</td>
+            </tr>
+            <tr>
+                <th>FechaAlta</th>
+                <td>{{ usuario.fechaAlta ? usuario.fechaAlta|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>FechaBaja</th>
+                <td>{{ usuario.fechaBaja ? usuario.fechaBaja|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UltimoAcceso</th>
+                <td>{{ usuario.ultimoAcceso ? usuario.ultimoAcceso|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>CantidadAccesos</th>
+                <td>{{ usuario.cantidadAccesos }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admusuario_index') }}">back to list</a>
+
+    <a href="{{ path('app_admusuario_edit', {'id': usuario.id}) }}">edit</a>
+
+    {{ include('admusuario/_delete_form.html.twig') }}
+{% endblock %}
