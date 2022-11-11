@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Usuario;
-use App\Form\UsuarioType;
+use App\Form\Usuario1Type;
 use App\Repository\UsuarioRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,7 +33,7 @@ class AdmusuarioController extends AbstractController
     public function new(Request $request, UsuarioRepository $usuarioRepository, UserPasswordHasherInterface $userPasswordHasherInterface): Response
     {
         $usuario = new Usuario();
-        $form = $this->createForm(UsuarioType::class, $usuario);
+        $form = $this->createForm(Usuario1Type::class, $usuario);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -65,7 +65,7 @@ class AdmusuarioController extends AbstractController
   
     public function edit(Request $request, Usuario $usuario, UsuarioRepository $usuarioRepository, UserPasswordHasherInterface $userPasswordHasherInterface): Response
     {
-        $form = $this->createForm(UsuarioType::class, $usuario);
+        $form = $this->createForm(Usuario1Type::class, $usuario);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
