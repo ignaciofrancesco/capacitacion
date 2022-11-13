@@ -4,14 +4,18 @@ namespace App\Controller;
 
 use App\DataTables\UsuarioTableType;
 use App\Entity\Usuario;
-use App\Form\Usuario1Type;
+use App\Form\UsuarioType;
+use App\Repository\UsuarioRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Omines\DataTablesBundle\DataTableFactory;
+
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+
+
 
 /**
  * @Route("/usuario")
@@ -48,27 +52,30 @@ class UsuarioController extends AbstractController
      * 
      * @IsGranted("ROLE_EDITOR")
      */
-    function new(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    function new(Request $request, UsuarioRepository $usuarioRepository, UserPasswordHasherInterface $passwordHasher): Response
     {
         $usuario = new Usuario();
-        $form = $this->createForm(Usuario1Type::class, $usuario);
+        $form = $this->createForm(UsuarioType::class, $usuario);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+            //$entityManager = $this->getDoctrine()->getManager();
 
             $usuario->setFechaAlta(new \DateTime());
             $usuario->setPassword(
-                $passwordEncoder->encodePassword($usuario, $form->get("password")->getData())
+                $passwordHasher->hashPassword($usuario, $form->get("password")->getData())
             );
             $usuario->setRoles(array_values($form->get("roles")->getData()));
             $usuario->setDni($form->get("dni")->getData());
             $usuario->setApellido($form->get("apellido")->getData());
             $usuario->setNombre($form->get("nombre")->getData());
             $usuario->setEmail($form->get("email")->getData());
-            $entityManager->persist($usuario);
+            //$entityManager->persist($usuario);
 
-            $entityManager->flush();
+            //$entityManager->flush();
+
+            $usuarioRepository->add($usuario, true);
+
             $this->addFlash('info', 'Se ha creado el usuario: ' . $usuario->getUsername());
             return $this->redirectToRoute('usuario_index');
         }
@@ -94,19 +101,21 @@ class UsuarioController extends AbstractController
      * 
      * @IsGranted("ROLE_EDITOR")
      */
-    public function edit(Request $request, Usuario $usuario, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function edit(Request $request, Usuario $usuario, UsuarioRepository $usuarioRepository, UserPasswordHasherInterface $passwordHasher): Response
     {
-        $form = $this->createForm(Usuario1Type::class, $usuario);
+        $form = $this->createForm(UsuarioType::class, $usuario);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $usuario->setPassword(
-                $passwordEncoder->encodePassword($usuario, $form->get("password")->getData())
+                $passwordHasher->hashPassword($usuario, $form->get("password")->getData())
             );
 
             $usuario->setRoles(array_values($form->get("roles")->getData()));
 
-            $this->getDoctrine()->getManager()->flush();
+            $usuarioRepository->add($usuario,true);
+
+           // $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('usuario_index');
         }

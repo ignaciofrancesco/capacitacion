@@ -13,3 +13,6 @@ $primary: rgb(255, 19, 223); // Customiza el color principal de Bootstrap
 
 // se agregan los estilos de datatables de bootstrap
 @import '~datatables.net-bs5/css/dataTables.bootstrap5.min.css';
+
+// se agrega la libreria font awesome
+@import '~@fortawesome/fontawesome-free/css/all.css';

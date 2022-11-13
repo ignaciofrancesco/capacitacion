@@ -8,7 +8,7 @@
 		{% if is_granted('ROLE_EDITOR') %}
 			<div id="botonera-usuario" class="row" style="display: none;">
 				<div class="col-12">
-					<div class="float-right boton">
+					<div class="float-end boton">
 						<a class="btn btn-primary shadow" href="{{ path('usuario_new') }}">Crear Nuevo Usuario</a>
 					</div>
 				</div>
@@ -34,7 +34,7 @@
 		$(function () {
 			
 			var grillaUsuarios = $('#usuarioList').initDataTables( {{ datatable_settings(datatable) }}, {
-				dom: "B<'row' <'#busqueda.col-sm-4 text-left'f><'col-sm-8 text-right'i><'col-sm-12' tr>><'row' <'col-sm-6'l><'col-sm-6'p>>",
+				dom: "B<'row' <'#busqueda.col-sm-4 text-start'f><'col-sm-8 text-end'i><'col-sm-12' tr>><'row' <'col-sm-6'l><'col-sm-6'p>>",
 				buttons: [],
 				searching: true,
 				language: {
