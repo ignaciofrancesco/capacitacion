@@ -77,12 +77,13 @@ class UsuarioTableType extends AbstractController implements DataTableTypeInterf
         $dataTable->createAdapter(ORMAdapter::class, [
             'entity' => Usuario::class,
             'query' => function (QueryBuilder $builder) {
-                $circunscripcionesIds = !is_null($this->getUser()->getCircunscripcion()) ? $this->getUser()->getCircunscripcion()->getCircunscripcionesListByZona() : null;
+                $circunscripcionesIds = null; //!is_null($this->getUser()->getCircunscripcion()) ? $this->getUser()->getCircunscripcion()->getCircunscripcionesListByZona() : null;
 
                 $builder
                     ->select('u')
                     ->from(Usuario::class, 'u')
-                    ->leftjoin('u.oficina', 'o');
+                    //->leftjoin('u.oficina', 'o')
+                    ;
                 
                 // Si el usuario activo pertenece a una Circunscripción filtra por la Zona (Norte o Sur)
                 if ($circunscripcionesIds) {

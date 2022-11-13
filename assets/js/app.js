@@ -13,3 +13,16 @@
 
  // se importan todos los componentes js de bootstrap
  import '../../node_modules/bootstrap/dist/js/bootstrap.js';
+
+
+ 
+ // se agrega jQuery
+ const $ = require("jquery");
+
+ // create global $ and jQuery variables
+ global.$ = global.jQuery = $;
+
+ // agrega DataTables
+ require('datatables.net-bs5');
+
+ var dt =('datatables.net-bs5');

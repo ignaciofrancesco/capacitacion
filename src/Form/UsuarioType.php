@@ -18,7 +18,7 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\ChoiceList\View\ChoiceView;
 
-class Usuario1Type extends AbstractType
+class UsuarioType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -94,4 +94,7 @@ class Usuario1Type extends AbstractType
             return strcasecmp($a->label, $b->label);
         });
     }
+
+
+
 }

@@ -16,6 +16,11 @@
         {% block javascripts %}
             {# usando webpack, se define donde esta el archivo js principal (public/build/js/app.js) #}
             {{ encore_entry_script_tags('js/app') }} 
+
+            {# idealmente, este script solo debe ser incluido en los templates q usen datatables #}
+            <script src="{{ asset('bundles/datatables/js/datatables.js') }}"></script> 
+           {# no me funciona la línea para agregar el js de datatables, asi q copie el contenido del archivo directamente en app.js #}
+
         {% endblock %}
     </head>
 

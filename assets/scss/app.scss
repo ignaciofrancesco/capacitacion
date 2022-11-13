@@ -10,3 +10,6 @@ $primary: rgb(255, 19, 223); // Customiza el color principal de Bootstrap
 
 // luego de realizado todo lo anterior, se importan los estilos duros propios, sin variables
 @import '../styles/app.css';
+
+// se agregan los estilos de datatables de bootstrap
+@import '~datatables.net-bs5/css/dataTables.bootstrap5.min.css';
